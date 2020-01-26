@@ -1,11 +1,41 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # модель_Создание пользователя
-class ClientUser(models.Model):
+class Author(models.Model):
+    EXECUTER = 'UE'
+    AUTHOR_PROJECT = 'AP'
+    ROLE_CHOICES = (
+        ('UE', 'Executor'),
+        ('AP', 'Autor Project'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
+    role = models.CharField(max_length=2, choices=ROLE_CHOICES, default=EXECUTER)
+
+# Модель Проекта
+class Project(models.Model):
+    authr_project = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name='project')
+    authr_project_name = models.CharField(max_length=155, blank=True)
+    created_time_project = models.DateTimeField(auto_now_add=True)
+    updated_time_project = models.DateTimeField(auto_now=True)
+
+
+    pass
+
+class ProjectStatus(models.Model):
+    pass
+
+class ProjectName(models.Model):
+    pass
+
+class ProjectContent(models.Model):
     pass
 
 # модель_Задача
-class TaskPerformer(models.Model):
+class Task(models.Model):
     pass
 
 class TaskLeadTime(models.Model):
@@ -29,6 +59,8 @@ class TaskContent(models.Model):
     #описание задачи, возможность прилажить файл или картинку
     pass
 
+
+
 # Модель сообщения
 class MassageOutcome(models.Model):
     #out_massage
@@ -46,17 +78,4 @@ class MassageDateOfCreation(models.Model):
     pass
 
 class MassageCorrectionDate(models.Model):
-    pass
-
-# Модель Проекта
-class ProjectAuthor(models.Model):
-    pass
-
-class ProjectStatus(models.Model):
-    pass
-
-class ProjectName(models.Model):
-    pass
-
-class ProjectContent(models.Model):
     pass
