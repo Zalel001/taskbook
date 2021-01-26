@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +76,12 @@ WSGI_APPLICATION = 'taskbook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Task-Book',
-        'USER' : 'Admin',
-        'PASSWORD' : 'Admin',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Task_Book',
+        'USER': 'Admin',
+        'PASSWORD': 'Admin',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
